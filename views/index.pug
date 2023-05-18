@@ -3,3 +3,34 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  a(href="/signup") signup
+  br
+  br
+  a(href="/login") login
+  br
+  br
+
+  a(href="/add-message") add message!
+  br
+  br
+  a(href="/join-the-club") join the club
+
+  h3 list all the messages here!
+
+  each msg in messages 
+    p #{msg}
+    if user
+      p #{msg.title}
+      p #{msg.text}
+      p #{msg.timestamp}
+      p #{msg.fullname}
+    else 
+      p #{msg.title}
+      p #{msg.text}
+
+  br
+  p User: #{user}
+  p User: #{title}
+
+  a(href="/logout") logout
+

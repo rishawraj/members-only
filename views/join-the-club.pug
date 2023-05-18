@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    a(href="/") home
+
+    h1 Join The Club
+    if user 
+        br
+        br
+        p #{user}
+        p #{user.username}
+
+        form(action="", method="post") 
+            input(type="hidden" name="username" value =`${user.username}`)
+            input(type="hidden" name="password" value=`${user.password}`)
+
+            label(for="passcode") Enter The Passcode: 
+            br
+            br
+            input(type="text" name="passcode")
+            br
+            br
+            button(type="submit") Join
+    else 
+        p login first 
+        a(href="/login") login
