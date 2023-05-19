@@ -50,4 +50,11 @@ router.get("/add-message", (req, res) => {
 
 router.post("/add-message", controller.addMessage);
 
+router.post("/delete-message", controller.deleteMessage);
+
+router.get("/admin", (req, res) => {
+  res.render("admin", { user: req.user });
+});
+router.post("/admin", controller.admin);
+
 module.exports = router;

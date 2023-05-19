@@ -3,17 +3,17 @@ extends layout
 block content
     a(href="/") home
 
-    h1 Join The Club
+    h1 Become An Admin
     if user 
         br
         br
-        p #{user}
-        p #{user.username}
+        //- p #{user}
+        //- p #{user.username}
 
         form(action="", method="post") 
             input(type="hidden", name="user_id" value=`${user._id}`)
 
-            label(for="passcode") Enter The Passcode: 
+            label(for="passcode") Enter The Admin Passcode: 
             br
             br
             input(type="text" name="passcode")
