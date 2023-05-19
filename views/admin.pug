@@ -1,14 +1,23 @@
 extends layout
 
 block content
-    a(href="/") home
+    if (user)
+        nav
+            a(href="/") home
+            div.nav-container
+                a(href="/add-message") add message!
+                a(href="/join-the-club") join the club
+                a.logout-link(href="/logout") logout
+
+    else 
+        nav 
+            a(href="/") home
+            a(href="/login") login 
 
     h1 Become An Admin
     if user 
         br
         br
-        //- p #{user}
-        //- p #{user.username}
 
         form(action="", method="post") 
             input(type="hidden", name="user_id" value=`${user._id}`)

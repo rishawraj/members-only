@@ -1,59 +1,46 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  a(href="/signup") signup
-  br
-  br
-  a(href="/login") login
-  br
-  br
+  if (user)
+    nav
+      a(href="/") home
+      div.nav-container
+        a(href="/add-message") add message!
+        a(href="/join-the-club") join the club
+        a.logout-link(href="/logout") logout
 
-  a(href="/add-message") add message!
-  br
-  br
-  a(href="/join-the-club") join the club
+  else 
+    nav 
+      a(href="/") home
+      a(href="/login") login 
 
-  br
-  br
-  a(href="/admin") admin
+  main 
+    h1 list all the messages here!
 
+    each msg in messages 
 
-  p #{user}
+      - if (user && user.isAdmin === true)
+        div.message
+          h3 #{msg.title}
+          p #{msg.text}
+          p #{msg.timestamp}
+          p #{msg.fullname}
+          form(action="/delete-message", method="post") 
+            input(type="hidden", name="message_id" value=`${msg._id}`)
+            button(type="submit") delete
 
-  h3 list all the messages here!
+      - else if (user && user.membership === true)
+        div.message
+          h3 #{msg.title}
+          p #{msg.text}
+          p #{msg.timestamp}
+          p #{msg.fullname}
 
-  each msg in messages 
-    p #{msg}
-
-
-    - if (user && user.isAdmin === true)
-      div.message
-        h3 #{msg.title}
-        p #{msg.text}
-        p #{msg.timestamp}
-        p #{msg.fullname}
-        form(action="/delete-message", method="post") 
-          input(type="hidden", name="message_id" value=`${msg._id}`)
-          button(type="submit") delete
-
-    - else if (user && user.membership === true)
-      div.message
-        h3 #{msg.title}
-        p #{msg.text}
-        p #{msg.timestamp}
-        p #{msg.fullname}
-
-    - else
-      div.message 
-        h3 #{msg.title}
-        p #{msg.text}
+      - else
+        div.message 
+          h3 #{msg.title}
+          p #{msg.text}
+          p.membership-info Login and become a member to see more info!
 
 
-  br
-  p User: #{user}
-  p User: #{title}
-
-  a(href="/logout") logout
 

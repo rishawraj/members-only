@@ -1,14 +1,49 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/* global */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 a {
-  color: #00b7ff;
+  text-decoration: none;
+}
+
+/* global */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  /* margin: 5px; */
+}
+
+nav {
+  background-color: lightcoral;
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+  /* width: 70%; */
+  /* margin-inline: auto; */
+}
+
+.nav-container {
+  /* background-color: lightgreen; */
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+main {
+  background-color: lightpink;
+  width: 60%;
+  margin-inline: auto;
 }
 
 .message {
-  padding: 20px;
-  background-color: lightcoral;
-  margin: 10px;
+  background-color: lightblue;
+  margin: 20px;
 }

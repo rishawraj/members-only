@@ -1,16 +1,24 @@
 extends layout 
 
 block content 
+    if (user)
+        nav
+            a(href="/") home
+            div.nav-container
+                a(href="/add-message") add message!
+                a(href="/join-the-club") join the club
+                a.logout-link(href="/logout") logout
 
-    a(href="/") home
+    else 
+        nav 
+            a(href="/") home
+            a(href="/login") login 
+
     h1 #{title}
-    p this is the signup page!
     span Already registered? 
     a(href="/login") Log in
     br
     br
-
-
 
 
     form(action="", method="post") 
@@ -30,4 +38,4 @@ block content
         input(type="text" name="fullname")
         br
         br
-        button(type="submit") Send
+        button(type="submit") Sign Up 

@@ -1,7 +1,18 @@
 extends layout
 
 block content
-    a(href="/") home 
+    if (user)
+        nav
+            a(href="/") home
+            div.nav-container
+                a(href="/add-message") add message!
+                a(href="/join-the-club") join the club
+                a.logout-link(href="/logout") logout
+
+    else 
+        nav 
+            a(href="/") home
+            a(href="/login") login 
 
     h1 Login Page
 
